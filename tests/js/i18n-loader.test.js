@@ -1,4 +1,3 @@
-// eslint-disable-next-line jest/prefer-spy-on -- Nothing to spy on.
 global.fetch = jest.fn();
 fetch.mockFetchResponse = function ( body, init = {} ) {
 	const status = parseInt( init.status || 200 );
