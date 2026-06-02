@@ -5,14 +5,14 @@
 	"license": "GPL-2.0-or-later",
 	"require": {
 		"php": ">=7.2",
-		"automattic/jetpack-constants": "^3.0.10",
-		"automattic/jetpack-status": "^6.1.5"
+		"automattic/jetpack-constants": "^3.0.11-alpha",
+		"automattic/jetpack-status": "^6.1.6-alpha"
 	},
 	"require-dev": {
 		"brain/monkey": "^2.6.2",
 		"yoast/phpunit-polyfills": "^4.0.0",
 		"wikimedia/testing-access-wrapper": "^1.0 || ^2.0 || ^3.0 || ^4.0",
-		"automattic/phpunit-select-config": "^1.0.6"
+		"automattic/phpunit-select-config": "^1.0.7-alpha"
 	},
 	"suggest": {
 		"automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
@@ -35,13 +35,11 @@
 		"phpunit": [
 			"phpunit-select-config phpunit.#.xml.dist --colors=always"
 		],
-		"test-coverage": "pnpm concurrently --names php,js 'php -dpcov.directory=. ./vendor/bin/phpunit-select-config phpunit.#.xml.dist --coverage-php \"$COVERAGE_DIR/php.cov\"' 'pnpm:test-coverage'",
-		"test-js": [
-			"pnpm run test"
-		],
-		"test-php": [
-			"@composer phpunit"
-		]
+		"test-coverage": "pnpm concurrently --names php,js 'composer test-php-coverage' 'composer test-js-coverage'",
+		"test-js": "pnpm run test",
+		"test-js-coverage": "pnpm run test-coverage",
+		"test-php": "@composer phpunit",
+		"test-php-coverage": "php -dpcov.directory=. ./vendor/bin/phpunit-select-config phpunit.#.xml.dist --coverage-php \"$COVERAGE_DIR/php.cov\""
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
